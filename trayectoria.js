@@ -23,15 +23,22 @@ state.create = function() {
     this.tilemap.createTileType( 3 );
     this.tilemap.createTileType( 4 );
 
+
+    
+         var n1=Math.floor((Math.random()*4)+0),n2=Math.floor((Math.random()*4)+0),n3=Math.floor((Math.random()*4)+0);//,n2=(Math.random()*4)+1,n3=(Math.random()*4)+1;
+    //this.n1 = new Kiwi.GameObjects.Textfield(this, '0', 250, 30, '#FFF',8);
+    //this.addChild(this.n1);
+    
+
     var tilemapdata = [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 4, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 4, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        0, 0, 0, n2, 0, 0, 0, 0, n2, 0, 0, 0, n1, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, n1, 0, 0, n3, 0, n2, 0, 0, n2, n2, 0, 0,
+        0, 0, 0, 0, n1, 0, n2, n3, 0, 0, 0, 0, n1, 0, 0,0, 0,
+        0, 0, 0, n1, 0, 0, 0, 0, 0, 0, 0, 0, n2, n3, 0, 0, 0,
+        0, 0, 0, 0, n2, n2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, n1, 0, n2, n3, n3, n1, n2, 0, 0, 0,
+        0, 0, 0, 0, n1, 0, n2, 0, n3, 0, n3, n2, n1, 0, 0, 0, 0
     ];
 
 
@@ -138,6 +145,8 @@ state.create = function() {
     for(var i = 1; i < this.tilemap.tileTypes.length; i++) {
             this.tilemap.tileTypes[i].allowCollisions = Kiwi.Components.ArcadePhysics.ANY;
         }
+  
+
     this.vx = 0;
     this.vxText = new Kiwi.GameObjects.Textfield(this, '0', 50, 30, '#FFF',8);
     this.addChild(this.vxText);
@@ -146,15 +155,7 @@ state.create = function() {
     this.vy = 0;
     this.vyText = new Kiwi.GameObjects.Textfield(this, '0', 50, 40, '#FFF',8);
     this.addChild(this.vyText);
-    /*this.vxText = new Kiwi.GameObjects.Textfield(this, '0', 50, 30, '#FFF',8);
-    this.addChild(this.vx);
-        this.vx = 0;
-    this.vxText = new Kiwi.GameObjects.Textfield(this, '0', 50, 30, '#FFF',8);
-    this.addChild(this.vx);
-        this.vx = 0;
-    this.vxText = new Kiwi.GameObjects.Textfield(this, '0', this.game.stage.width-100, 30, '#FFF',8);
-    this.addChild(this.vx);
-*/
+  
 };
 
 state.mouseClicked = function () {
@@ -232,7 +233,7 @@ state.update = function() {
 
 
 
-   // this.checkCollision();
+    this.checkCollision();
     this.drawTrajectory();
 
     this.libroarma.rotation = Kiwi.Utils.GameMath.angleBetween( this.libroarma.x, this.libroarma.y, this.game.input.x, this.game.input.y );
